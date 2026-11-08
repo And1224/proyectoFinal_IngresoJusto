@@ -1,0 +1,3 @@
+grupo,n,tasa_base,tasa_seleccion,precision,tpr,fpr,muestra_suficiente
+Male,4823,0.3048,0.4485,0.57,0.8388,0.2774,True
+Female,2496,0.113,0.1414,0.5524,0.6915,0.0714,True

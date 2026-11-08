@@ -1,0 +1,237 @@
+{
+  "dataset": {
+    "filas": 48790,
+    "columnas": 14,
+    "tasa_positiva": 0.2394,
+    "faltantes": {
+      "workclass": 2795,
+      "occupation": 2805,
+      "native_country": 856
+    },
+    "tasa_positiva_por_sexo": {
+      "Female": 0.1094,
+      "Male": 0.3039
+    },
+    "tasa_positiva_por_raza": {
+      "Amer-Indian-Eskimo": 0.117,
+      "Asian-Pac-Islander": 0.2696,
+      "Black": 0.1209,
+      "Other": 0.1232,
+      "White": 0.2541
+    },
+    "proporcion_por_sexo": {
+      "Male": 0.6685,
+      "Female": 0.3315
+    },
+    "proporcion_por_raza": {
+      "White": 0.855,
+      "Black": 0.096,
+      "Asian-Pac-Islander": 0.0311,
+      "Amer-Indian-Eskimo": 0.0096,
+      "Other": 0.0083
+    }
+  },
+  "duplicados_eliminados": 52,
+  "particion": {
+    "train": 34152,
+    "val": 7319,
+    "test": 7319
+  },
+  "tasa_positiva_particion": {
+    "train": 0.2394,
+    "val": 0.2394,
+    "test": 0.2394
+  },
+  "modelo": {
+    "tipo": "LogisticRegression",
+    "C": 0.1,
+    "umbral": 0.26,
+    "variables": [
+      "age",
+      "education_num",
+      "hours_per_week",
+      "capital_gain",
+      "capital_loss",
+      "workclass",
+      "marital_status",
+      "occupation",
+      "relationship"
+    ],
+    "excluidas": {
+      "fnlwgt": "peso muestral del censo, no describe a la persona",
+      "education": "redundante con education_num (misma información en orden numérico)",
+      "native_country": "atributo sensible (origen nacional) y 90 % de una sola categoría",
+      "sex": "atributo protegido: solo se usa para auditar equidad",
+      "race": "atributo protegido: solo se usa para auditar equidad"
+    }
+  },
+  "metricas_validacion": {
+    "accuracy": 0.8038,
+    "precision": 0.563,
+    "recall": 0.8054,
+    "f1": 0.6628,
+    "roc_auc": 0.8907,
+    "vp": 1411,
+    "fp": 1095,
+    "vn": 4472,
+    "fn": 341
+  },
+  "metricas_prueba": {
+    "accuracy": 0.8071,
+    "precision": 0.5676,
+    "recall": 0.8151,
+    "f1": 0.6692,
+    "roc_auc": 0.9017,
+    "vp": 1428,
+    "fp": 1088,
+    "vn": 4479,
+    "fn": 324
+  },
+  "metricas_prueba_umbral_05": {
+    "accuracy": 0.8489,
+    "precision": 0.7234,
+    "recall": 0.597,
+    "f1": 0.6542,
+    "roc_auc": 0.9017,
+    "vp": 1046,
+    "fp": 400,
+    "vn": 5167,
+    "fn": 706
+  },
+  "linea_base_prueba": {
+    "accuracy": 0.7606,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "roc_auc": 0.5,
+    "vp": 0,
+    "fp": 0,
+    "vn": 5567,
+    "fn": 1752
+  },
+  "comparacion_cv": [
+    {
+      "modelo": "Línea base (clase mayoritaria)",
+      "accuracy": 0.7606,
+      "f1": 0.0,
+      "roc_auc": 0.5,
+      "f1_desv": 0.0
+    },
+    {
+      "modelo": "Regresión logística",
+      "accuracy": 0.8445,
+      "f1": 0.643,
+      "roc_auc": 0.8993,
+      "f1_desv": 0.0106
+    },
+    {
+      "modelo": "Árbol de decisión (profundidad 8)",
+      "accuracy": 0.8552,
+      "f1": 0.6484,
+      "roc_auc": 0.9026,
+      "f1_desv": 0.0095
+    },
+    {
+      "modelo": "KNN (k = 25)",
+      "accuracy": 0.8465,
+      "f1": 0.6635,
+      "roc_auc": 0.8981,
+      "f1_desv": 0.0101
+    }
+  ],
+  "equidad": {
+    "sexo": {
+      "diferencia_paridad_demografica": 0.3071,
+      "razon_impacto_dispar": 0.3153,
+      "diferencia_igualdad_oportunidades": 0.1473,
+      "diferencia_probabilidades_igualadas": 0.206,
+      "grupos_evaluados": [
+        "Male",
+        "Female"
+      ]
+    },
+    "raza": {
+      "diferencia_paridad_demografica": 0.2078,
+      "razon_impacto_dispar": 0.4346,
+      "diferencia_igualdad_oportunidades": 0.212,
+      "diferencia_probabilidades_igualadas": 0.212,
+      "grupos_evaluados": [
+        "White",
+        "Black",
+        "Asian-Pac-Islander"
+      ]
+    },
+    "sexo_con_atributos_sensibles": {
+      "diferencia_paridad_demografica": 0.2599,
+      "razon_impacto_dispar": 0.2591,
+      "diferencia_igualdad_oportunidades": 0.2297,
+      "diferencia_probabilidades_igualadas": 0.2297,
+      "grupos_evaluados": [
+        "Male",
+        "Female"
+      ]
+    },
+    "metricas_con_atributos_sensibles": {
+      "accuracy": 0.8403,
+      "precision": 0.6519,
+      "recall": 0.714,
+      "f1": 0.6816,
+      "roc_auc": 0.9024,
+      "vp": 1251,
+      "fp": 668,
+      "vn": 4899,
+      "fn": 501
+    },
+    "proxy_relationship_sexo": {
+      "Husband": {
+        "Female": 0.0001,
+        "Male": 0.9999
+      },
+      "Wife": {
+        "Female": 0.9987,
+        "Male": 0.0013
+      }
+    }
+  },
+  "aceptacion": {
+    "AC1_f1": {
+      "umbral": 0.65,
+      "valor": 0.6692,
+      "cumple": true
+    },
+    "AC2_roc_auc": {
+      "umbral": 0.85,
+      "valor": 0.9017,
+      "cumple": true
+    },
+    "AC3_supera_linea_base": {
+      "umbral": 0.3,
+      "valor": 0.6692,
+      "cumple": true
+    },
+    "AC4_igualdad_oportunidades_sexo": {
+      "umbral": 0.1,
+      "valor": 0.1473,
+      "cumple": false
+    },
+    "AC5_impacto_dispar_sexo": {
+      "umbral": 0.8,
+      "valor": 0.3153,
+      "cumple": false
+    }
+  },
+  "coeficientes_top": {
+    "marital_status_Married-civ-spouse": 1.3284,
+    "occupation_Other-service": -0.8847,
+    "occupation_Exec-managerial": 0.8301,
+    "occupation_Farming-fishing": -0.8109,
+    "relationship_Own-child": -0.7742,
+    "relationship_Wife": 0.7722,
+    "marital_status_Never-married": -0.7671,
+    "education_num": 0.738,
+    "occupation_Priv-house-serv": -0.6347,
+    "occupation_Tech-support": 0.589,
+    "workclass_Federal-gov": 0.575,
+    "occupation_Prof-specialty": 0.5624
+  }
+}

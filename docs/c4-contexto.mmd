@@ -1,0 +1,24 @@
+flowchart TB
+    analista["<b>Analista de crédito</b><br/>[Persona]<br/>Revisa la preselección y<br/>toma la decisión final"]
+    cientifico["<b>Equipo de ciencia de datos</b><br/>[Persona]<br/>Entrena, evalúa y<br/>versiona el modelo"]
+    comite["<b>Comité de ética y cumplimiento</b><br/>[Persona]<br/>Revisa las métricas de equidad<br/>y aprueba o frena el uso"]
+
+    sistema["<b>IngresoJusto</b><br/>[Sistema de software]<br/>Estima la probabilidad de ingreso &gt; 50K<br/>y genera reportes de desempeño y equidad"]
+
+    uci["<b>UCI Machine Learning Repository</b><br/>[Sistema externo]<br/>Dataset Adult, censo de EE. UU. 1994"]
+    origen["<b>Sistema de originación de crédito</b><br/>[Sistema externo, fase futura]<br/>Envía solicitudes y recibe<br/>la preselección"]
+    github["<b>GitHub</b><br/>[Sistema externo]<br/>Código, ramas y revisión"]
+
+    cientifico -- "Ejecuta el flujo y<br/>revisa resultados" --> sistema
+    sistema -- "Obtiene datos de<br/>entrenamiento" --> uci
+    origen -- "Solicita puntaje<br/>(sin sexo ni raza)" --> sistema
+    sistema -- "Entrega puntaje<br/>y explicación" --> analista
+    comite -- "Consulta reportes<br/>de equidad" --> sistema
+    cientifico -- "Versiona código<br/>y reportes" --> github
+
+    classDef person fill:#08427B,stroke:#073B6F,color:#ffffff
+    classDef system fill:#1168BD,stroke:#0B4884,color:#ffffff
+    classDef external fill:#8C8C8C,stroke:#6B6B6B,color:#ffffff
+    class analista,cientifico,comite person
+    class sistema system
+    class uci,origen,github external
