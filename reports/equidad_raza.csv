@@ -1,0 +1,6 @@
+grupo,n,tasa_base,tasa_seleccion,precision,tpr,fpr,muestra_suficiente
+White,6264,0.2548,0.3675,0.5743,0.8283,0.2099,True
+Black,689,0.1248,0.1597,0.4818,0.6163,0.0945,True
+Asian-Pac-Islander,232,0.2284,0.3362,0.5385,0.7925,0.2011,True
+Amer-Indian-Eskimo,71,0.1127,0.2254,0.375,0.75,0.1587,False
+Other,63,0.1429,0.1587,0.5,0.5556,0.0926,False
